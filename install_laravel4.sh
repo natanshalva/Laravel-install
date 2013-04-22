@@ -113,17 +113,40 @@ mv ./app/config/database.php ./app/config/database.php.orig ;
 ehco "Install migrate"
 eval "php artisan migrate:install"
 
+echo -e "whould you like to install the following packages ? \n\n
 
-echo "Update the Generator Profiler Guard to the file /app/config/database.php "
+         Generator - by the one and the only Jeffry way \n\n
+         You can see it in gitHub: https://github.com/JeffreyWay/Laravel-4-Generators
+
+         Guard - by the one and the only Jeffry way \n\n
+         You can see it in gitHub: https://github.com/JeffreyWay/Laravel-Guard
+
+         The Profiler - written by Loic Sharma \n\n\
+         You can see it in gitHub: https://github.com/loic-sharma/profiler \n\n\
+
+         yes or no (y/n)" 
+
+read answer
+if [ $answer = y ] ; then
+
+    echo "Update the Generator Profiler Guard to the file composer.json "
+    mv ./composer.json ./composer.json.orig
+    sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\",  "  ./composer.json.orig > ./composer.json
+
+    echo -e "run composer update"
+    composer update
+
+    echo "Update the Generator Profiler Guard to the file /app/config/app.php "
+
+    echo "create ./app/config/app.php.orig file"
+    mv ./app/config/app.php ./app/config/app.php.orig ;
+    sed "115 i\'Way\Generators\GeneratorsServiceProvider',\n'Profiler\ProfilerServiceProvider',\n'Way\Console\GuardLaravelServiceProvider', "  ./app/config/app.php.orig > ./app/config/app.php
+     
+    echo -e  "\n---------- Good, we finish configure the files to work with database and Generator Profiler Guard   --------------- "
+
+fi 
 
 
-echo "create ./app/config/app.php.orig file"
-mv ./app/config/app.php ./app/config/app.php.orig ;
-sed "115 i\'Way\Generators\GeneratorsServiceProvider',\n'Profiler\ProfilerServiceProvider',\n'Way\Console\GuardLaravelServiceProvider', "  ./app/config/app.php.orig > ./app/config/app.php
-
-
- 
-echo -e  "\n---------- Good, we finish configure the files to work with database and Generator Profiler Guard   --------------- "
 
 # virtual host
 

@@ -131,7 +131,10 @@ if [ $answer = y ] ; then
 
     echo "Update the Generator Profiler Guard to the file composer.json "
     mv ./composer.json ./composer.json.orig
-    sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\",  "  ./composer.json.orig > ./composer.json
+
+    sed "s|\"laravel/framework\": \"4.0.*\"|\"laravel/framework\": \"4.0.*\",|" ./composer.json.orig > ./composer.json.orig2
+
+    sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\",  "  ./composer.json.orig2 > ./composer.json
 
     echo -e "run composer update"
     composer update

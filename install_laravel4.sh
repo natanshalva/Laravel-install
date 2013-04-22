@@ -134,7 +134,7 @@ if [ $answer = y ] ; then
 
     sed "s|\"laravel/framework\": \"4.0.*\"|\"laravel/framework\": \"4.0.*\",|" ./composer.json.orig > ./composer.json.orig2
 
-    sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\",  "  ./composer.json.orig2 > ./composer.json
+    sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\"  "  ./composer.json.orig2 > ./composer.json
 
     echo -e "run composer update"
     composer update
@@ -143,8 +143,16 @@ if [ $answer = y ] ; then
 
     echo "create ./app/config/app.php.orig file"
     mv ./app/config/app.php ./app/config/app.php.orig ;
-    sed "115 i\'Way\Generators\GeneratorsServiceProvider',\n'Profiler\ProfilerServiceProvider',\n'Way\Console\GuardLaravelServiceProvider', "  ./app/config/app.php.orig > ./app/config/app.php
-     
+    sed "115 i\ 'Way-Generators-GeneratorsServiceProvider',\n \'Profiler-ProfilerServiceProvider',\n\'Way-Console-GuardLaravelServiceProvider',  "  ./app/config/app.php.orig > ./app/config/app.php.orig2
+
+    sed 's/Way-Generators-GeneratorsServiceProvider/Way\\Generators\\GeneratorsServiceProvider/g  
+      s/Profiler-ProfilerServiceProvider/Profiler\\ProfilerServiceProvider/g  
+      s/Way-Console-GuardLaravelServiceProvider/Way\\Console\\GuardLaravelServiceProvider/g ' ./app/config/app.php.orig2 > ./app/config/app.php 
+    
+    echo "Give the $_dir 777 permissions " ;
+    chmod -R 777 ../$_dir ;
+
+
     echo -e  "\n---------- Good, we finish configure the files to work with database and Generator Profiler Guard   --------------- "
 
 fi 

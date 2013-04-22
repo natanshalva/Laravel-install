@@ -1,17 +1,19 @@
 #!/bin/sh
-
+#
+#   Download and install Laravel 4 ( with Generator Guard and Profiler )
+#  
+#   Written by Natan Shalva   20.4.2013 
+#    
+#   
 
 # install laravl 4 
-
-# The laravel download link 
-_laravel4="https://github.com/laravel/laravel/archive/develop.zip"
-
 
 
 printf "\n \n We are going to download and install Laravel 4 from $_laravel4 \n \n";
 
+cd /var/www/
 
-printf "Please write your new Laravel site dir ( it will be create in /var/www/ )"
+printf "Please write your new Laravel 4 site directory ( it will be create in /var/www/ )"
 read _dir
 
 
@@ -27,7 +29,7 @@ if [ -d /var/www/$_dir ] ; then
 fi
 
 
-printf "\n \n creating new dir name: $_dir \n \n"
+printf "\n \n Creating new dir name: $_dir \n \n"
 cd /var/www/
 mkdir $_dir
 
@@ -43,7 +45,24 @@ printf "\n install composer \n"
 curl -s https://getcomposer.org/installer | php
 php composer.phar install
 
-printf "\n downloading Laravel 4 and unzip \n";
+
+
+#
+# The Laravel download link
+#
+
+
+_laravel4="https://github.com/laravel/laravel/archive/develop.zip"
+
+printf "\n We will download laravl from: $_laravel4 \n Is this good for you ? (y/n)"
+
+read answer
+if [ $answer = n ] ; then
+    printf "\n Please insert download link to laravl 4 "
+    read _laravel4
+fi 
+
+printf "\n Downloading Laravel 4 and unzip \n";
 wget $_laravel4 ;
 unzip '*.zip' ;
 
@@ -52,7 +71,7 @@ printf "\n Give the $_dir 777 permissions \n " ;
 chmod -R 777 ../$_dir ;
 
 
-printf "\n move the unzip up one level \n " ;
+printf "\n Move the unzip up one level \n " ;
 #cd laravel-develop ;
 pwd ;
 rsync -avz laravel-develop/ ./
@@ -61,19 +80,19 @@ pwd
 printf "\n Just to test if all good - let's see the list of files: \n" ;
 ls -la;
 
-printf "\n remove zip and laravel-develop folder \n"
+printf "\n Remove zip and laravel-develop folder \n"
 rm -rf laravel-develop develop.zip ;
 
-printf "\n composer update \n"
+printf "\n Execute composer update \n"
 if [ -f ./composer.json ] ; then 
 		composer update
 else 
-	printf "\n can't find composer.json file \n";
+	printf "\n Opps, can't find composer.json file \n";
 	# exit the sctipt 
 	return;
 fi	
 
-printf "\n we are in: ";
+printf "\n We are in the directory: ";
 pwd ;
 
 	   
@@ -89,31 +108,36 @@ fi
 
 # create database 
 
+printf "\n \n Create database with the same name as the file directory (y/n)"
+read answer
+if [ $answer = y ] ; then
 
-printf "\n \n create database with the same name as the file dir \n"
-printf "\n Enter your mysql user"
-read _user
+    printf "\n Enter your mysql user"
+    read _user
 
-printf "\n Enter your mysql user password"
-read _pass
+    printf "\n Enter your mysql user password"
+    read _pass
 
-if [ -d /var/lib/mysql/$_dir ] ; then
+    if [ -d /var/lib/mysql/$_dir ] ; then
 
-    printf "\n Database exist, whould you like to delete it and create new one ? (y/n)"
-    read answer
-    if [ $answer = y ] ; then
-    	mysqladmin -u $_user -p"$_pass" drop $_dir ;
-    	printf "\n database deleted \n"
-    	printf "\n Create the new database $_dir \n "
-    	mysqladmin -u $_user -p"$_pass" create $_dir
+        printf "\n Database exist, whould you like to delete it and create new one ? (y/n)"
+        read answer
+        if [ $answer = y ] ; then
+        	mysqladmin -u $_user -p"$_pass" drop $_dir ;
+        	printf "\n database deleted \n"
+        	printf "\n Create the new database $_dir \n "
+        	mysqladmin -u $_user -p"$_pass" create $_dir
+        fi
+
+    else
+        printf "\n Create the database $_dir \n "
+        mysqladmin -u $_user -p"$_pass" create $_dir
     fi
 
-else
-    printf "\n Create the database $_dir \n "
-    mysqladmin -u $_user -p"$_pass" create $_dir
-fi
+    printf  "\n \n ---------- Good, we finish with the database issues  --------------- \n "
 
-printf  "\n \n ---------- Good, we finish with the database issues  --------------- \n "
+
+
 
 printf "\n Update the database name and the user in Laravl 4 config ./app/config/database.php"
 
@@ -128,6 +152,12 @@ mv ./app/config/database.php ./app/config/database.php.orig ;
 
 printf "\n Install migrate \n "
 eval "php artisan migrate:install"
+
+fi 
+
+# 
+#  Generator Guard and Profiler
+# 
 
 printf "\n would you like to install the following packages ? \n\n
 
@@ -264,6 +294,8 @@ banner "All good"
 printf "\n \n"
 
 printf "\n \n ************ All GOOD! **************  \n \n" ;
+printf "\n \n You can see you new Laravel at:  \n  \n open -a Chrome http://$_dir  \n \n" ;
+
 printf "\n \n Script written by Natan Shalva \n \n" 
 printf "\n \n Enjoy your new Laravel 4 ... \n \n"
 

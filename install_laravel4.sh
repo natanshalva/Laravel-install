@@ -9,8 +9,23 @@ _laravel4="https://github.com/laravel/laravel/archive/develop.zip"
 
 echo "We are going to download and install Laravel 4 from $_laravel4";
 
-echo "Please write your new Laravel site dir ( it will be create in /var/www/)"
+
+echo "Please write your new Laravel site dir ( it will be create in /var/www/ )"
 read _dir
+
+
+if [ -d /var/www/$_dir ] ; then
+
+    echo "The directory: $_dir already exist. would you like to delete it ? (y/n) " ;
+    read answer
+    if [ $answer = y ] ; then
+        rm -rf $_dir ;
+    else 
+        return
+    fi  
+fi
+
+
 echo "creating new dir name: $_dir"
 cd /var/www/
 mkdir $_dir
@@ -149,6 +164,8 @@ if [ $answer = y ] ; then
       s/Profiler-ProfilerServiceProvider/Profiler\\ProfilerServiceProvider/g  
       s/Way-Console-GuardLaravelServiceProvider/Way\\Console\\GuardLaravelServiceProvider/g ' ./app/config/app.php.orig2 > ./app/config/app.php 
     
+    rm ./app/config/app.php.orig2 ;
+
     echo "Give the $_dir 777 permissions " ;
     chmod -R 777 ../$_dir ;
 

@@ -113,9 +113,9 @@ mv ./app/config/database.php ./app/config/database.php.orig ;
 ehco "Install migrate"
 eval "php artisan migrate:install"
 
-echo "Update the Generator Profiler Guard ./app/config/database.php "
 
-echo "insert generator and profiler to the app/config/app.php"
+echo "Update the Generator Profiler Guard to the file /app/config/database.php "
+
 
 echo "create ./app/config/app.php.orig file"
 mv ./app/config/app.php ./app/config/app.php.orig ;
@@ -197,7 +197,7 @@ if [ $answer = y ] ; then
 fi
 
 
-echo -e "\n \n All GOOD!"
+echo -e "\n \n All GOOD!" ;
 echo "Enjoy your coding..."
 echo "Script by Natan Shalva " 
 

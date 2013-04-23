@@ -201,8 +201,25 @@ if [ $answer = y ] ; then
     chmod -R 777 ../$_dir ;
 
 
-    printf  "\n \n---------- Good, we finish configure the files to work with database and Generator Profiler Guard   --------------- \n "
+    printf  "\n \n---------- Good, we finish config the files to work with Generator, Profiler, Guard.   --------------- \n "
 
+    printf "\n Would you like to create info file on your project \n
+with the packages info for more instructions how to use them ? (y/n)"
+    read answer
+    if [ $answer = y ] ; then
+
+    printf  "\n\n Generator - by the one and the only Jeffry way \n\n
+         You can see it in gitHub: https://github.com/JeffreyWay/Laravel-4-Generators
+
+         Guard - by the one and the only Jeffry way \n\n
+         You can see it in gitHub: https://github.com/JeffreyWay/Laravel-Guard
+
+         The Profiler - written by Loic Sharma \n\n\
+         You can see it in gitHub: https://github.com/loic-sharma/profiler \n\n\ " > packages.info
+    
+        printf  "\n New file create are you root project path name: packages.info"
+
+    fi
 fi 
 
 # istall git 
@@ -219,17 +236,19 @@ printf "\n \n We have commit all the files \n "
 
 # virtual host
 
-printf "\n \n \n whould you like to create VirtualHost ? (y/n)"
+printf "\n \n \n whould you like to create VirtualHost config to Laravl 4 ? (y/n)"
 read answer
 
 if [ $answer = y ] ; then
+
+virtualhost=y
 
     printf "\n create virtual host \n "
 
     printf "\n Enter the user (if you don't know what to write here the it is probably root )"
     read usr
 
-    homedir=$_dir ;
+homedir=$_dir ;
 
     printf "\n Enter domain \n "
     read sn
@@ -294,7 +313,10 @@ banner "All good"
 printf "\n \n"
 
 printf "\n \n ************ All GOOD! **************  \n \n" ;
+
+if [ $virtualhost = y ] ; then
 printf "\n \n You can see you new Laravel at:  \n  \n open -a Chrome http://$_dir  \n \n" ;
+fi
 
 printf "\n \n Script written by Natan Shalva \n \n" 
 printf "\n \n Enjoy your new Laravel 4 ... \n \n"

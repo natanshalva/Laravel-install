@@ -32,6 +32,9 @@ Download the script to your local machine with this command:
 
     wget --no-check-certificate https://github.com/natanshalva/laravel-install/raw/master/install_laravel4.sh 
 
+Set file permissions:
+
+    chmod 755 install_laravel4.sh
 
 And then run:
 

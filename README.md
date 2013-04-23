@@ -28,7 +28,8 @@ Laravel-install
 
 ## Setup
 
-wget --no-check-certificate https://github.com/natanshalva/laravel-install/raw/master/install_laravel4.sh 
+    wget --no-check-certificate https://github.com/natanshalva/laravel-install/raw/master/install_laravel4.sh 
 
-and then run
-sh install_laravel4.sh
+And then run:
+
+    sh install_laravel4.sh

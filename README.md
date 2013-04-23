@@ -20,7 +20,7 @@ Laravel-install
   * generate key
   * setup folder permission
 
-6 - Option - install and config Jeffry Way Generator and Guard, and Loic Sharma Profiler
+6 - Option - install and config Jeffrey Way Generator and Guard, and Loic Sharma Profiler
 
 7 - Option - Install Git and commit all files for good start
 

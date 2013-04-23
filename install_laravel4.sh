@@ -33,7 +33,7 @@ printf "\n \n Creating new dir name: $_dir \n \n\r"
 cd /var/www/
 mkdir $_dir
 
-printf "\n Assigning $_dir 777 permissions \n\r "
+printf "\n Assigning $_dir 777 permissions \n\r"
 chmod -R 777 $_dir
 
 cd $_dir; 
@@ -57,7 +57,7 @@ printf "\n Fetching Laravl 4 from: $_laravel4 \n please select y to proceed n to
 
 read answer
 if [ $answer = n ] ; then
-    printf "\n Please type download link for laravl 4 "
+    printf "\n Please type download link for laravl 4"
     read _laravel4
 fi 
 
@@ -66,7 +66,7 @@ wget $_laravel4 ;
 unzip '*.zip' ;
 
 
-printf "\n Assigning $_dir 777 permissions \n " ;
+printf "\n Assigning $_dir 777 permissions \n" ;
 chmod -R 777 ../$_dir ;
 
 
@@ -131,14 +131,14 @@ if [ $answer = y ] ; then
         mysqladmin -u $_user -p"$_pass" create $_dir
     fi
 
-    printf  "\n \n ---------- Database installation complete --------------- \n "
+    printf  "\n \n ---------- Database installation complete --------------- \n"
 
 
 
 
 printf "\n Configuring database name and the user in Laravl 4 config ./app/config/database.php"
 
-printf "\n create ./app/config/database.php.orig file \n "
+printf "\n create ./app/config/database.php.orig file \n"
 mv ./app/config/database.php ./app/config/database.php.orig ;
 
  sed "s/'database'  => 'database'/'database'  => '$_dir'/g  
@@ -147,7 +147,7 @@ mv ./app/config/database.php ./app/config/database.php.orig ;
 
 
 
-printf "\n Installing migrate \n "
+printf "\n Installing migrate \n"
 eval "php artisan migrate:install"
 
 fi 
@@ -165,24 +165,23 @@ printf "\n would you like to install the following packages ? \n\n
          You can see it in gitHub: https://github.com/JeffreyWay/Laravel-Guard
 
          The Profiler - written by Loic Sharma \n\n\
-         You can see it in gitHub: https://github.com/loic-sharma/profiler \n\n\
+         You can see it in gitHub: https://github.com/loic-sharma/profiler \n\n
 
          yes or no (y/n) \n\r" 
-
 read answer
 if [ $answer = y ] ; then
 
-    printf "\n Configure Generator Profiler Guard in composer.json \n "
+    printf "\n Configure Generator Profiler Guard in composer.json \n"
     mv ./composer.json ./composer.json.orig
 
     sed "s|\"laravel/framework\": \"4.0.*\"|\"laravel/framework\": \"4.0.*\",|" ./composer.json.orig > ./composer.json.orig2
 
     sed "4 i\ \"way/generators\": \"dev-master\", \n        \"loic-sharma/profiler\": \"1.0.*\",\n        \"way/guard-laravel\": \"dev-master\"  "  ./composer.json.orig2 > ./composer.json
 
-    printf "\n Run composer update \n "
+    printf "\n Run composer update \n"
     composer update
 
-    printf "\n Configure Generator Profiler Guard in /app/config/app.php \n "
+    printf "\n Configure Generator Profiler Guard in /app/config/app.php \n"
 
     printf "\n create ./app/config/app.php.orig file \n"
     mv ./app/config/app.php ./app/config/app.php.orig ;
@@ -198,7 +197,7 @@ if [ $answer = y ] ; then
     chmod -R 777 ../$_dir ;
 
 
-    printf  "\n \n---------- Generator, Profiler and Guard installation complete   --------------- \n "
+    printf  "\n \n---------- Generator, Profiler and Guard installation complete   --------------- \n"
 
     printf "\n Would you like to create packages info and instruction file ? (y/n) \n\r"
     read answer
@@ -211,24 +210,29 @@ if [ $answer = y ] ; then
          gitHub gitHub: https://github.com/JeffreyWay/Laravel-Guard
 
          The Profiler - written by Loic Sharma \n\n\
-         gitHub: https://github.com/loic-sharma/profiler \n\n\ " > packages.info
+         gitHub: https://github.com/loic-sharma/profiler \n\n " > packages.info
     
         printf  "\n packages.info created at project root directory"
 
     fi
 fi 
 
-# istall git 
+# install git 
 
-printf "\n \n install git \n "
+printf "\n Would you like to git initial ? \n
+It will run 'git init', 'git add -A' and 'git commit -am'Good start' (y/n) \n\r"
+read answer
+if [ $answer = y ] ; then
+
+printf "\n \n install git \n"
 git init
 
-printf "\n \n Adding and commiting project to git  \n "
+printf "\n \n Adding and commiting project to git  \n"
 git add -A
 git commit -am"Good Start"
 
-printf "\n \n Project commited \n "
-
+printf "\n \n Project commited \n"
+fi
 
 # virtual host
 
@@ -237,7 +241,7 @@ read answer
 
 if [ $answer = y ] ; then
 
-virtualhost=y
+virtualhost="y";
 
     printf "\n Creating virtual host \n "
 
@@ -246,7 +250,7 @@ virtualhost=y
 
 homedir=$_dir ;
 
-    printf "\n Type in domain ( exp: laravl.local ) \n\r "
+    printf "\n Type in domain ( exp: laravl.local ) \n\r"
     read sn
 
 
@@ -314,6 +318,6 @@ if [ $virtualhost = y ] ; then
 printf "\n \n New Laravel project can be viewed at:  \n http://$_dir  \n \n" ;
 fi
 
-printf "\n \n Script written by Natan Shalva \n to promote peace love and understanding \n \n" 
+printf "\n \n Script written by Natan Shalva \n -> to promote peace love and understanding \n \n" 
 printf "\n \n Enjoy your new Laravel 4 ... \n \n"
 

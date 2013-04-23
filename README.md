@@ -3,26 +3,26 @@ Laravel-install
 
 
 
- Download and install laravel 4 (with Generator Guard and Profiler)
+ Installation script for Laravel 4 (inc. Generator Guard and Profiler packages)
 
 
-## This script will do the folling things : 
+## This script does the following:
 
-1 - create directory for the project 
+1 - Create project directory 
 
-2 - download the Laravel 4 dev 
+2 - Download the Laravel 4 dev 
 
 3 - Install and run composer 
 
-4 - Create database 
+4 - Create MYSQL database 
 
-5 - config Laravel to conect the database 
+5 - Config Laravel database connection 
   * generate key
   * setup folder permission
 
-6 - Option - install config Jeffry Way Generator and Guard, and Loic Sharma Profiler 
+6 - Option - install and config Jeffry Way Generator and Guard, and Loic Sharma Profiler
 
-7 - Install Git and commit all files 
+7 - Option - Install Git and commit all files for good start
 
 8 - Option - Create virtualHost 
 
@@ -31,6 +31,7 @@ Laravel-install
 Download the script to your local machine with this command: 
 
     wget --no-check-certificate https://github.com/natanshalva/laravel-install/raw/master/install_laravel4.sh 
+
 
 And then run:
 

@@ -8,13 +8,9 @@
 #    
 #   
 
-
-
-<<<<<<< HEAD
 # install laravl 4 
 
-=======
->>>>>>> ebe8974eec419ac338b1f4345a7ec3e026151d7d
+
 printf "\n \n Welcome, You are about to download and install Laravel 4. \n \n";
 
 cd /var/www/
@@ -89,21 +85,14 @@ printf "\n Running composer update \n"
 if [ -f ./composer.json ] ; then 
         composer update
 else 
-<<<<<<< HEAD
     printf "\n Oops, can't find composer.json \n";
     # exit the sctipt 
     return;
 fi  
-=======
-	printf "\n Oops, can't find composer.json \n";
-	# exit the sctipt 
-	return;
-fi	
->>>>>>> ebe8974eec419ac338b1f4345a7ec3e026151d7d
 
 pwd ;
 
-       
+
 if [ -f ./artisan ] ; then 
     printf "\n php artisan key \n" ;
     eval "php artisan key:generate"  
@@ -131,17 +120,10 @@ if [ $answer = y ] ; then
         printf "\n Database already exists, whould you like to delete it and create new one ? (y/n) \n\r"
         read answer
         if [ $answer = y ] ; then
-<<<<<<< HEAD
             mysqladmin -u $_user -p"$_pass" drop $_dir ;
             printf "\n Deleting database \n"
             printf "\n Creating new database $_dir \n "
             mysqladmin -u $_user -p"$_pass" create $_dir
-=======
-        	mysqladmin -u $_user -p"$_pass" drop $_dir ;
-        	printf "\n Deleting database \n"
-        	printf "\n Creating new database $_dir \n "
-        	mysqladmin -u $_user -p"$_pass" create $_dir
->>>>>>> ebe8974eec419ac338b1f4345a7ec3e026151d7d
         fi
 
     else
@@ -334,3 +316,4 @@ fi
 
 printf "\n \n Script written by Natan Shalva \n to promote peace love and understanding \n \n" 
 printf "\n \n Enjoy your new Laravel 4 ... \n \n"
+

@@ -12,7 +12,7 @@ Laravel-install
 
 2 - download the Laravel 4 dev 
 
-3 - Install composer 
+3 - Install and run composer 
 
 4 - Create database 
 

@@ -13,13 +13,11 @@ printf "\n \n We are going to download and install Laravel 4 from $_laravel4 \n 
 
 cd /var/www/
 
-printf "Please write your new Laravel 4 site directory ( it will be create in /var/www/ )"
+printf "Please write your new Laravel 4 site project directory \n\r ( it will be create in /var/www/ )\n\r"
 read _dir
-
-
 if [ -d /var/www/$_dir ] ; then
 
-    printf "\n \n The directory: $_dir already exist. would you like to delete it ? (y/n) \n \n" ;
+    printf "\n \n The directory: $_dir already exist. would you like to delete it ? (y/n) \n\r" ;
     read answer
     if [ $answer = y ] ; then
         rm -rf $_dir ;
@@ -29,11 +27,11 @@ if [ -d /var/www/$_dir ] ; then
 fi
 
 
-printf "\n \n Creating new dir name: $_dir \n \n"
+printf "\n \n Creating new dir name: $_dir \n \n\r"
 cd /var/www/
 mkdir $_dir
 
-printf "\n Give the $_dir 777 permissions \n "
+printf "\n Give the $_dir 777 permissions \n\r "
 chmod -R 777 $_dir
 
 cd $_dir; 
@@ -54,7 +52,7 @@ php composer.phar install
 
 _laravel4="https://github.com/laravel/laravel/archive/develop.zip"
 
-printf "\n We will download laravl from: $_laravel4 \n Is this good for you ? (y/n)"
+printf "\n We will download Laravl 4 from: $_laravel4 \n Is this good for you ? (y/n)\n\r"
 
 read answer
 if [ $answer = n ] ; then
@@ -108,19 +106,19 @@ fi
 
 # create database 
 
-printf "\n \n Create database with the same name as the file directory (y/n)"
+printf "\n \n Create database with the same name as the file directory (y/n) \n\r"
 read answer
 if [ $answer = y ] ; then
 
-    printf "\n Enter your mysql user"
+    printf "\n Enter your mysql user \n\r"
     read _user
 
-    printf "\n Enter your mysql user password"
+    printf "\n Enter your mysql user password \n\r"
     read _pass
 
     if [ -d /var/lib/mysql/$_dir ] ; then
 
-        printf "\n Database exist, whould you like to delete it and create new one ? (y/n)"
+        printf "\n Database exist, whould you like to delete it and create new one ? (y/n) \n\r"
         read answer
         if [ $answer = y ] ; then
         	mysqladmin -u $_user -p"$_pass" drop $_dir ;
@@ -170,7 +168,7 @@ printf "\n would you like to install the following packages ? \n\n
          The Profiler - written by Loic Sharma \n\n\
          You can see it in gitHub: https://github.com/loic-sharma/profiler \n\n\
 
-         yes or no (y/n)" 
+         yes or no (y/n) \n\r" 
 
 read answer
 if [ $answer = y ] ; then
@@ -204,7 +202,7 @@ if [ $answer = y ] ; then
     printf  "\n \n---------- Good, we finish config the files to work with Generator, Profiler, Guard.   --------------- \n "
 
     printf "\n Would you like to create info file on your project \n
-with the packages info for more instructions how to use them ? (y/n)"
+with the packages info for more instructions how to use them ? (y/n) \n\r"
     read answer
     if [ $answer = y ] ; then
 
@@ -236,7 +234,7 @@ printf "\n \n We have commit all the files \n "
 
 # virtual host
 
-printf "\n \n \n whould you like to create VirtualHost config to Laravl 4 ? (y/n)"
+printf "\n \n \n whould you like to create VirtualHost config to Laravl 4 ? (y/n) \n\r"
 read answer
 
 if [ $answer = y ] ; then
@@ -245,12 +243,12 @@ virtualhost=y
 
     printf "\n create virtual host \n "
 
-    printf "\n Enter the user (if you don't know what to write here the it is probably root )"
+    printf "\n Enter the user (if you don't know what to write here the it is probably root ) \n\r"
     read usr
 
 homedir=$_dir ;
 
-    printf "\n Enter domain \n "
+    printf "\n Enter domain ( exp: laravl.local ) \n\r "
     read sn
 
 
@@ -315,10 +313,10 @@ printf "\n \n"
 printf "\n \n ************ All GOOD! **************  \n \n" ;
 
 if [ $virtualhost = y ] ; then
-printf "\n \n You can see you new Laravel at:  \n  \n open -a Chrome http://$_dir  \n \n" ;
+printf "\n \n You can see you new Laravel at:  \n http://$_dir  \n \n" ;
 fi
 
-printf "\n \n Script written by Natan Shalva \n \n" 
+printf "\n \n Script written by Natan Shalva \n to promote peace love and understanding \n \n" 
 printf "\n \n Enjoy your new Laravel 4 ... \n \n"
 
 

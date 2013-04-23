@@ -1,4 +1,4 @@
-# download and install laravel 4 ( with Generator Guard and Profiler )
+# Download and install laravel 4 ( with Generator Guard and Profiler )
 
 ## This script will do the folling things : 
 

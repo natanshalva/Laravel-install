@@ -9,7 +9,7 @@
 # install laravl 4 
 
 
-printf "\n \n We are going to download and install Laravel 4 from $_laravel4 \n \n";
+printf "\n \n Welcome, We are going to download and install Laravel 4. \n \n";
 
 cd /var/www/
 

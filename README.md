@@ -24,7 +24,7 @@ Laravel-install
 
 7 - Option - Install Git and commit all files for good start
 
-8 - Optional - Create virtualHost 
+8 - Option - Create virtualHost 
 
 ## Setup
 

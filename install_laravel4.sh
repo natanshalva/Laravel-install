@@ -158,10 +158,10 @@ fi
 
 printf "\n would you like to install the following packages ? \n\n
 
-         Generator - by the one and the only Jeffry way \n\n
+         Generator - by the one and the only: Jeffrey Way \n\n
          You can see it in gitHub: https://github.com/JeffreyWay/Laravel-4-Generators
 
-         Guard - by the one and the only Jeffry way \n\n
+         Guard - by the one and the only: Jeffrey Way \n\n
          You can see it in gitHub: https://github.com/JeffreyWay/Laravel-Guard
 
          The Profiler - written by Loic Sharma \n\n\
@@ -204,10 +204,10 @@ if [ $answer = y ] ; then
     read answer
     if [ $answer = y ] ; then
 
-    printf  "\n\n Generator - by the one and the only Jeffry way \n\n
+    printf  "\n\n Generator - by the one and the only: Jeffrey Way \n\n
          gitHub: https://github.com/JeffreyWay/Laravel-4-Generators
 
-         Guard - by the one and the only Jeffry way \n\n
+         Guard - by the one and the only: Jeffrey Way \n\n
          gitHub gitHub: https://github.com/JeffreyWay/Laravel-Guard
 
          The Profiler - written by Loic Sharma \n\n\

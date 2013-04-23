@@ -18,7 +18,7 @@ Laravel-install
 
 5 - config Laravel to conect the database 
   * generate key
-	* setup folder permission
+  * setup folder permission
 
 6 - Option - install config Jeffry Way Generator and Guard, and Loic Sharma Profiler 
 

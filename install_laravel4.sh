@@ -83,10 +83,11 @@ printf "\n install composer \n"
 eval "curl -s https://getcomposer.org/installer | php"
 
 if [ -d /usr/local/bin/composer ] ; then
-
+    echo "ok, we see you have composer file in /usr/local/bin/composer"
+else 
    echo "we are moving the composer to /usr/local/bin/composer \n
    for more info: http://getcomposer.org/doc/00-intro.md" 
-   eval "cp composer.phar /usr/local/bin/composer"
+   eval "cp composer.phar /usr/local/bin/composer" 
 fi 
 
 

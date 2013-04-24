@@ -40,10 +40,6 @@ cd $_dir;
 
 pwd ;
 
-printf "\n install composer \n"
-curl -s https://getcomposer.org/installer | php
-
-
 #
 # The Laravel download link
 #
@@ -68,9 +64,6 @@ printf "\n Assigning $_dir 777 permissions \n" ;
 chmod -R 777 ../$_dir ;
 
 
-eval "php composer.phar install"
-
-
 #cd laravel-develop ;
 pwd ;
 rsync -avz laravel-develop/ ./
@@ -82,14 +75,31 @@ ls -la;
 printf "\n Removing zip and laravel-develop folder \n"
 rm -rf laravel-develop develop.zip ;
 
-printf "\n Running composer update \n"
+
+# ------- composer -----------
+
+
+printf "\n install composer \n"
+eval "curl -s https://getcomposer.org/installer | php"
+
+if [ -d /usr/local/bin/composer ] ; then
+
+   echo "we are moving the composer to /usr/local/bin/composer \n
+   for more info: http://getcomposer.org/doc/00-intro.md" 
+   eval "cp composer.phar /usr/local/bin/composer"
+fi 
+
+
+printf "\n install composer - php composer.phar install \n"
 if [ -f ./composer.json ] ; then 
-        composer update
+        eval "php composer.phar install"
 else 
     printf "\n Oops, can't find composer.json \n";
     # exit the sctipt 
     return;
 fi  
+
+ 
 
 pwd ;
 

@@ -42,8 +42,6 @@ pwd ;
 
 printf "\n install composer \n"
 curl -s https://getcomposer.org/installer | php
-php composer.phar install
-
 
 
 #
@@ -68,6 +66,9 @@ unzip '*.zip' ;
 
 printf "\n Assigning $_dir 777 permissions \n" ;
 chmod -R 777 ../$_dir ;
+
+
+php composer.phar install
 
 
 #cd laravel-develop ;

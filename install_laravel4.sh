@@ -68,7 +68,7 @@ printf "\n Assigning $_dir 777 permissions \n" ;
 chmod -R 777 ../$_dir ;
 
 
-php composer.phar install
+eval "php composer.phar install"
 
 
 #cd laravel-develop ;
